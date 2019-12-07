@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { TodoType } from '../../store/dataType';
 
+import Label from '../Label/Label';
+
 export interface TodoProps {
   todo: TodoType;
+  onClickEdit?: any;
 }
 
-const Todo: FC<TodoProps> = (props) => {
-  const { todo } = props
+const Todo: FC<TodoProps> = ({ todo, onClickEdit}) => {
   return(
     <div>
       <label htmlFor="">
@@ -14,11 +16,11 @@ const Todo: FC<TodoProps> = (props) => {
         <div>{todo.text}</div>
       </label>
       <section>
-        <button>edit</button>
+        <button onClick={onClickEdit}>edit</button>
         <button>x</button>
       </section>
       <section>
-        {todo.label ? <label>{todo.label.text}</label> : ''}
+        {todo.label ? <Label label={todo.label} editable={false}/> : null}
       </section>
     </div>
   )
