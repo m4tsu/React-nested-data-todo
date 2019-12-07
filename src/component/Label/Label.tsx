@@ -1,5 +1,13 @@
 import React, { FC, useState } from 'react';
 import { LabelType } from '../../store/dataType';
+import styled from 'styled-components';
+
+const StyledLabel = styled.label`
+  cursor: ${props => props.onClick ? 'pointer' : 'default'};
+  // background-color: #def;
+  // border-radius: 5px;
+  // padding: .5rem;
+`;
 
 interface LabelProps {
   label: LabelType;
@@ -16,7 +24,7 @@ const Label: FC<LabelProps> = ({ label, editable })=> {
   };
 
   return (
-    <label onClick={ editable ? handleClick : undefined}>{label.text}</label>
+    <StyledLabel onClick={ editable ? handleClick : undefined}>{label.text}</StyledLabel>
   );
 }
 
