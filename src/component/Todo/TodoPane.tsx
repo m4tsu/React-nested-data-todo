@@ -15,7 +15,7 @@ const TodoPane: React.FC = () => {
           onChange={}
           value={}
         /> */}
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} labels={labels}/>
 
       </section>
 

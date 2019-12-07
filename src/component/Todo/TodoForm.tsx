@@ -3,7 +3,10 @@ import LabelSelector from '../Label/LabelSelector';
 import { LabelType, TodoType } from '../../store/dataType';
 
 interface TodoFormProps {
-  labels: LabelType[]
+  labels: LabelType[];
+  todo?: TodoType;
+  onClickCancel?: any;
+  onDone?: any;
 }
 
 interface TodoFormState {
@@ -11,28 +14,40 @@ interface TodoFormState {
   label: null | LabelType;
 }
 
-const TodoForm: FC<TodoFormProps> = ({labels}) => {
-  const [todo, setTodo] = useState<TodoFormState>({ text: '', label: null })
-  console.log(todo)
+const TodoForm: FC<TodoFormProps> = ({labels, todo, onClickCancel, onDone}) => {
+  const [formTodo, setFormTodo] = useState<TodoFormState>(
+    { text: todo ? todo.text : '', label: null }
+  )
+  const saveLabel: string = todo ? 'update' : 'add'
   const handleChangeText = ( event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTodo({ ...todo, text: event.target.value })
+    setFormTodo({ ...formTodo, text: event.target.value })
   }
   const clickSaveHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log(todo);
+    console.log(formTodo);
+    if(onDone) {
+      onDone();
+    }
+  }
+  const clickCancelHaner = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    onClickCancel();
   }
   const handleChangeLabel = (label: null | LabelType) => {
-    setTodo({...todo, label: label})
+    setFormTodo({...formTodo, label: label})
   }
 
   return (
     <div>
-      <textarea onChange={handleChangeText} value={todo.text} ></textarea>
+      <textarea onChange={handleChangeText} value={formTodo.text} ></textarea>
       <div>
-        <LabelSelector labels={labels} onChange={handleChangeLabel} value={todo.label}/>
-        <button onClick={ clickSaveHandler }>Save</button>
+        <LabelSelector labels={labels} onChange={handleChangeLabel} value={formTodo.label}/>
+        <button onClick={ clickSaveHandler }>{saveLabel}</button>
+        {
+          todo ? <button onClick={clickCancelHaner}>back</button> : null
+        }
       </div>
-      { todo.text }
+      {formTodo.text}
     </div>
   )
 };

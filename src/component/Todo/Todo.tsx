@@ -3,10 +3,10 @@ import { TodoType } from '../../store/dataType';
 
 export interface TodoProps {
   todo: TodoType;
+  onClickEdit?: any;
 }
 
-const Todo: FC<TodoProps> = (props) => {
-  const { todo } = props
+const Todo: FC<TodoProps> = ({ todo, onClickEdit}) => {
   return(
     <div>
       <label htmlFor="">
@@ -14,7 +14,7 @@ const Todo: FC<TodoProps> = (props) => {
         <div>{todo.text}</div>
       </label>
       <section>
-        <button>edit</button>
+        <button onClick={onClickEdit}>edit</button>
         <button>x</button>
       </section>
       <section>
