@@ -18,10 +18,6 @@ const TodoPane: React.FC = () => {
         <TodoList todos={todos} labels={labels}/>
 
       </section>
-
-      <section>
-        <label>Filter</label>
-      </section>
       <hr/>
     </div>
   )

@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { TodoType } from '../../store/dataType';
 
+import Label from '../Label/Label';
+
 export interface TodoProps {
   todo: TodoType;
   onClickEdit?: any;
@@ -18,7 +20,7 @@ const Todo: FC<TodoProps> = ({ todo, onClickEdit}) => {
         <button>x</button>
       </section>
       <section>
-        {todo.label ? <label>{todo.label.text}</label> : ''}
+        {todo.label ? <Label label={todo.label} editable={false}/> : null}
       </section>
     </div>
   )
