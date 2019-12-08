@@ -6,7 +6,7 @@ import { AppState } from '../store/store';
 import { TodoType, LabelType } from '../store/dataType';
 
 const useTodo = () => {
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
   const todoState = useSelector((state: AppState) => state.todoState);
   const dispatch = useDispatch();
   console.log('useTodo')

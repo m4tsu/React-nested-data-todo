@@ -1,5 +1,7 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import TodoReducer, { State as TodoState } from './Todo/reducers';
+import LabelReducer, { State as LabelState } from './Label/reducers';
+import { LabeledStatement } from '@babel/types';
 
 // for Redux dev tools
 const composeEnhancers =
@@ -13,11 +15,13 @@ const enhancer = composeEnhancers(applyMiddleware())
 
 export type AppState = {
   todoState: TodoState;
+  labelState: LabelState;
 }
 
 const store = createStore(
   combineReducers<AppState>({
-    todoState: TodoReducer
+    todoState: TodoReducer,
+    labelState: LabelReducer,
   }),
   enhancer
 );

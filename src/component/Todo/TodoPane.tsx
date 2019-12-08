@@ -3,11 +3,14 @@ import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import LabelSelector from '../Label/LabelSelector';
 import useTodo from '../../containers/Todo';
-import { labels } from '../../store/sample';
+import useLabel from '../../containers/Label';
+// import { labels } from '../../store/sample';
 
 const TodoPane: React.FC = () => {
   const { todoState, fetchTodos, changeFilterLabelId } = useTodo();
   const { todos, filterLabelId } = todoState;
+  const { labelState } = useLabel();
+  const { labels } = labelState;
   console.log('todo Pane')
   return (
     <div>
