@@ -41,7 +41,7 @@ const TodoForm: FC<TodoFormProps> = ({labels, todo, onClickCancel, onDone}) => {
     <div>
       <textarea onChange={handleChangeText} value={formTodo.text} ></textarea>
       <div>
-        <LabelSelector labels={labels} onChange={handleChangeLabel} value={formTodo.label}/>
+        <LabelSelector labels={labels} onChange={handleChangeLabel} value={formTodo.label ? formTodo.label.id : null}/>
         <button onClick={ clickSaveHandler }>{saveLabel}</button>
         {
           todo ? <button onClick={clickCancelHaner}>back</button> : null
