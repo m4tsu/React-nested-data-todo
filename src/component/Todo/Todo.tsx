@@ -5,7 +5,7 @@ import Label from '../Label/Label';
 
 export interface TodoProps {
   todo: TodoType;
-  onClickEdit?: any;
+  onClickEdit(): void;
 }
 
 const Todo: FC<TodoProps> = ({ todo, onClickEdit}) => {

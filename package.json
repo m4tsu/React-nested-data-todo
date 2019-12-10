@@ -27,7 +27,12 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "settings": {
+      "react": {
+        "version": "16.12.0"
+      }
+    }
   },
   "browserslist": {
     "production": [
@@ -42,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^16.9.15"
+    "@types/react": "^16.9.15",
+    "eslint": "^6.7.2"
   }
 }
