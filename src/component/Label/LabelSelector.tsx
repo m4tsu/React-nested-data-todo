@@ -3,10 +3,9 @@ import { LabelType } from '../../store/dataType';
 
 interface LabelSelectorProps {
   labels: LabelType[];
-  onChange: any;
+  onChange(label_id: null | number): void;
   value: null | number;
 }
-
 
 const LabelSelector: FC<LabelSelectorProps> = ({labels, onChange, value}) => {
   const handleSlected = (event: ChangeEvent<HTMLSelectElement>) => {

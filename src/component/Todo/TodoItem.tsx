@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 import { TodoType, LabelType } from '../../store/dataType';
+import useTodo from '../../containers/Todo';
 
 interface TodoItemProps {
   labels: LabelType[];
@@ -13,7 +14,7 @@ interface TodoItemState {
 }
 
 const TodoItem: FC<TodoItemProps> = ({ labels, todo }) => {
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState<boolean>(false);
   const toggleEditMode = () => {
     setEdit(!edit);
   }
